@@ -1,5 +1,4 @@
-# betbot-prototype
-Betbot AI protoype (Chatbot Interface &amp; Betslip features)
+# BetBot.ai - AI-Powered Betting Assistant
 
 A simple prototype for the Betbot AI web-app (No real working features whatsoever).
 

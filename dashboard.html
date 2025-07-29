@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dashboard - BetBot.ai</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Side Menu (Left Sidebar) - Desktop Only -->
+        <div class="side-menu" id="sideMenu">
+            <!-- Collapsed State -->
+            <div class="menu-collapsed" id="menuCollapsed">
+                <!-- Expand Button -->
+                <button class="menu-expand-btn" id="menuExpandBtn" aria-label="Expand menu">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="2" y1="6" x2="22" y2="6"></line>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <line x1="2" y1="18" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+
+                <!-- Add Chat Button -->
+                <button class="menu-add-chat-btn" id="addChatBtn" aria-label="Add new chat">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                </button>
+
+                <!-- Navigation Icons -->
+                <div class="menu-nav-icons">
+                    <button class="nav-icon-btn active" id="chatBtn" aria-label="Chat" data-nav="chat">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path>
+                        </svg>
+                    </button>
+                    
+                    <button class="nav-icon-btn" id="cartBtn" aria-label="Cart" data-nav="cart">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="8" cy="21" r="1"></circle>
+                            <circle cx="19" cy="21" r="1"></circle>
+                            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                        </svg>
+                    </button>
+                    
+                    <button class="nav-icon-btn" id="exploreBtn" aria-label="Explore" data-nav="explore">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polygon points="16.24,7.76 14.12,14.12 7.76,16.24 9.88,9.88 16.24,7.76"></polygon>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Bottom Navigation Icons -->
+                <div class="menu-nav-icons-bottom">
+                    <button class="nav-icon-btn" id="savedBtn" aria-label="Saved" data-nav="saved">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path>
+                        </svg>
+                    </button>
+                    
+                    <button class="nav-icon-btn" id="settingsBtn" aria-label="Settings" data-nav="settings">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Expanded State -->
+            <div class="menu-expanded" id="menuExpanded">
+                <!-- Menu Header - Fixed -->
+                <div class="menu-header">
+                    <div class="menu-brand">
+                        <div class="brand-main">
+                            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                                <div class="brand-logo">
+                                    <img src="./img/svg/mascot-white.svg" alt="Brand Logo" width="22" height="22" style="display: block;" />
+                                </div>
+                                <div class="brand-name">BetBot.ai</div>
+                            </a>
+                        </div>
+                        <span class="brand-chevron" id="closeMenuChevron">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                    <button class="new-chat-btn" id="newChatBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        New Chat
+                    </button>
+                </div>
+
+                <!-- Menu Body - Scrollable Chat History with Fade Overlays -->
+                <div class="menu-body" id="menuBody">
+                    <div class="chat-history-section" id="menuSectionContent">
+                        <!-- Today -->
+                        <div class="history-group">
+                            <div class="history-group-title">Today</div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Will Chet Holmgren go over 20 PTS next game?</div>
+                                <div class="chat-item-preview">Chet is UNLIKELY to go over 20+ PTS, but LIKELY to hit over 15.5 PTS based on recent performance...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">2 hours ago</span>
+                                    <span class="chat-item-type">NBA</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Lakers vs Warriors betting analysis</div>
+                                <div class="chat-item-preview">Strong value on the over with both teams averaging 118+ points in their last 5 games...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">4 hours ago</span>
+                                    <span class="chat-item-type">NBA</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Djokovic vs Nadal clay court prediction</div>
+                                <div class="chat-item-preview">Match duration bet could be profitable based on their recent clay court performances...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">6 hours ago</span>
+                                    <span class="chat-item-type">Tennis</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Yesterday -->
+                        <div class="history-group">
+                            <div class="history-group-title">Yesterday</div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Manchester United vs City odds analysis</div>
+                                <div class="chat-item-preview">Excellent value on the draw at +240 considering United's defensive improvements...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">1 day ago</span>
+                                    <span class="chat-item-type">Soccer</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">NFL Week 12 betting picks</div>
+                                <div class="chat-item-preview">Weather conditions favor the under in the Denver game, strong defensive matchup...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">1 day ago</span>
+                                    <span class="chat-item-type">NFL</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- This Week -->
+                        <div class="history-group">
+                            <div class="history-group-title">This Week</div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">NBA Finals Game 3 predictions</div>
+                                <div class="chat-item-preview">Analyzing key player matchups and historical performance data for optimal betting strategy...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">3 days ago</span>
+                                    <span class="chat-item-type">NBA</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Premier League title race analysis</div>
+                                <div class="chat-item-preview">Current odds and value bets for the remaining fixtures in the championship race...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">4 days ago</span>
+                                    <span class="chat-item-type">Soccer</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">March Madness bracket optimization</div>
+                                <div class="chat-item-preview">Statistical analysis of upset probabilities and optimal bracket construction strategies...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">5 days ago</span>
+                                    <span class="chat-item-type">NCAA</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Footer - Fixed -->
+                <div class="menu-footer">
+                    <div class="menu-quick-actions">
+                        <!-- Chat Icon (active: green) -->
+                        <img src="./img/svg/chat-icon.svg" width="24" height="24" alt="Chat" class="quick-action-icon quick-action-chat active" />
+                        <!-- Explore Icon (white) -->
+                        <img src="./img/svg/explore-icon.svg" width="24" height="24" alt="Explore" class="quick-action-icon quick-action-explore" />
+                        <!-- Favorites Icon (white) -->
+                        <img src="./img/svg/save-icon.svg" width="24" height="24" alt="Favorites" class="quick-action-icon quick-action-favs" />
+                        <!-- Cart Icon (white, for saved betslips) -->
+                        <img src="./img/svg/cart-icon.svg" width="24" height="24" alt="Cart" class="quick-action-icon quick-action-cart" />
+                    </div>
+                    <div class="menu-actions">
+                        <div class="menu-action-item" id="settingsBtn">
+                            <svg class="menu-action-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"></path>
+                            </svg>
+                            <span class="menu-action-text">Settings</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+            <div class="mobile-menu" id="mobileMenu">
+                <!-- Menu Header - Fixed -->
+                <div class="menu-header">
+                    <div class="menu-brand">
+                        <div class="brand-main">
+                            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                                <div class="brand-logo">
+                                    <img src="./img/svg/mascot-white.svg" alt="Brand Logo" width="20" height="20" style="display: block;" />
+                                </div>
+                                <div class="brand-name">BetBot.ai</div>
+                            </a>
+                        </div>
+                        <span class="brand-chevron" id="closeMobileMenuChevron">
+                            <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                    <button class="new-chat-btn" id="mobileNewChatBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        New Chat
+                    </button>
+                </div>
+
+                <!-- Menu Body - Scrollable Chat History with Fade Overlays -->
+                <div class="menu-body">
+                    <div class="chat-history-section" id="mobileMenuSectionContent">
+                        <!-- Today -->
+                        <div class="history-group">
+                            <div class="history-group-title">Today</div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Will Chet Holmgren go over 20 PTS next game?</div>
+                                <div class="chat-item-preview">Chet is UNLIKELY to go over 20+ PTS, but LIKELY to hit over 15.5 PTS based on recent performance...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">2 hours ago</span>
+                                    <span class="chat-item-type">NBA</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Lakers vs Warriors betting analysis</div>
+                                <div class="chat-item-preview">Strong value on the over with both teams averaging 118+ points in their last 5 games...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">4 hours ago</span>
+                                    <span class="chat-item-type">NBA</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Djokovic vs Nadal clay court prediction</div>
+                                <div class="chat-item-preview">Match duration bet could be profitable based on their recent clay court performances...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">6 hours ago</span>
+                                    <span class="chat-item-type">Tennis</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Yesterday -->
+                        <div class="history-group">
+                            <div class="history-group-title">Yesterday</div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Manchester United vs City odds analysis</div>
+                                <div class="chat-item-preview">Excellent value on the draw at +240 considering United's defensive improvements...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">1 day ago</span>
+                                    <span class="chat-item-type">Soccer</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">NFL Week 12 betting picks</div>
+                                <div class="chat-item-preview">Weather conditions favor the under in the Denver game, strong defensive matchup...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">1 day ago</span>
+                                    <span class="chat-item-type">NFL</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- This Week -->
+                        <div class="history-group">
+                            <div class="history-group-title">This Week</div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">NBA Finals Game 3 predictions</div>
+                                <div class="chat-item-preview">Analyzing key player matchups and historical performance data for optimal betting strategy...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">3 days ago</span>
+                                    <span class="chat-item-type">NBA</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Premier League title race analysis</div>
+                                <div class="chat-item-preview">Current odds and value bets for the remaining fixtures in the championship race...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">4 days ago</span>
+                                    <span class="chat-item-type">Soccer</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">March Madness bracket optimization</div>
+                                <div class="chat-item-preview">Statistical analysis of upset probabilities and optimal bracket construction strategies...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">5 days ago</span>
+                                    <span class="chat-item-type">NCAA</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Footer - Fixed -->
+                <div class="menu-footer">
+                    <div class="menu-quick-actions">
+                        <!-- Chat Icon (active: green) -->
+                        <img src="./img/svg/chat-icon.svg" width="24" height="24" alt="Chat" class="quick-action-icon quick-action-chat active" />
+                        <!-- Explore Icon (white) -->
+                        <img src="./img/svg/explore-icon.svg" width="24" height="24" alt="Explore" class="quick-action-icon quick-action-explore" />
+                        <!-- Favorites Icon (white) -->
+                        <img src="./img/svg/save-icon.svg" width="24" height="24" alt="Favorites" class="quick-action-icon quick-action-favs" />
+                        <!-- Cart Icon (white, for saved betslips) -->
+                        <img src="./img/svg/cart-icon.svg" width="24" height="24" alt="Cart" class="quick-action-icon quick-action-cart" />
+                    </div>
+                    <div class="menu-actions">
+                        <div class="menu-action-item" id="mobileSettingsBtn">
+                            <svg class="menu-action-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"></path>
+                            </svg>
+                            <span class="menu-action-text">Settings</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Section (Right) -->
+        <div class="dashboard" id="dashboard">
+            <div class="dashboard-inner">
+                <!-- 1. Navbar Section -->
+                <nav class="navbar-section">
+                    <div class="navbar-left">
+                        <!-- Mobile Menu Button -->
+                        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 6 15 12 9 18"></polyline>
+                            </svg>
+                        </button>
+                        <div class="navbar-title">
+                            Chet Holmgren Average PTS
+                        </div>
+                    </div>
+                    <div class="navbar-right">
+                        <button class="auth-button sign-in-btn">Login</button>
+                        <button class="auth-button sign-up-btn">Sign Up</button>
+                    </div>
+                </nav>
+                
+                <!-- Dashboard Content Container - Scrollable -->
+                <div class="dashboard-content-container">
+                    <!-- 2. User Prompt Bubble -->
+                    <section class="user-prompt-section">
+                        <div class="user-prompt-bubble">
+                            Will Chet Holmgren go over 20 PTS next game?
+                        </div>
+                    </section>
+
+                    <!-- 3. AI Answer Nav -->
+                    <section class="ai-answer-nav-section">
+                        <div class="nav-tags">
+                            <div class="nav-tag active" data-tab="answer">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 11l3 3L22 4"></path>
+                                    <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                                </svg>
+                                <span>Answer</span>
+                            </div>
+                            <div class="nav-tag" data-tab="sources">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path>
+                                    <polyline points="14,2 14,8 20,8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10,9 9,9 8,9"></polyline>
+                                </svg>
+                                <span>Sources</span>
+                                <div class="nav-badge">16</div>
+                            </div>
+                            <div class="nav-tag" data-tab="images">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                    <polyline points="21,15 16,10 5,21"></polyline>
+                                </svg>
+                                <span>Images</span>
+                            </div>
+                            <div class="nav-tag" data-tab="explore">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polygon points="16.24,7.76 14.12,14.12 7.76,16.24 9.88,9.88 16.24,7.76"></polygon>
+                                </svg>
+                                <span>All Odds</span>
+                            </div>
+                        </div>
+                        <div class="nav-separator"></div>
+                    </section>
+
+                    <!-- Tab Content Container -->
+                    <div class="tab-content">
+                        <!-- Answer Tab (default active) -->
+                        <div class="tab-pane active" data-tab="answer">
+                            <!-- 4. Image Slider -->
+                            <section class="image-slider-section">
+                        <div class="image-slider">
+                            <div class="slider-image">
+                                <img src="./img/chet1.jpeg" alt="Stats Chart 1" />
+                            </div>
+                            <div class="slider-image">
+                                <img src="./img/chet2.jpg" alt="Performance Graph" />
+                            </div>
+                            <div class="slider-image">
+                                <img src="./img/chet3.jpeg" alt="Court Analytics" />
+                            </div>
+                            <div class="slider-image">
+                                <img src="./img/chet4.jpeg" alt="Player Comparison" />
+                            </div>
+                            <div class="slider-image">
+                                <img src="./img/chet5.jpeg" alt="Season Stats" />
+                            </div>
+                            <div class="slider-image">
+                                <img src="./img/chet6.jpg" alt="Prediction Analysis" />
+                            </div>
+                        </div>
+                        <div class="slider-fade-right"></div>
+                    </section>
+
+                    <!-- 5. AI Chat Bubbles -->
+                    <section class="ai-chat-bubbles-section">
+                        <!-- First AI Bubble -->
+                        <div class="ai-chat-bubble">
+                            <div class="bubble-main-header">
+                                <img src="./img/svg/mascot-icon-green.svg" alt="Analysis Icon" class="bubble-header-icon" />
+                                <h2 class="bubble-main-title">Chet is <b>unlikely</b> to go over 20+ PTS, <br/> but <b>likely</b> to hit over 15.5 PTS.</h2>
+                            </div>
+                            <div class="bubble-separator"></div>
+                            <h3 class="bubble-title">Summary</h3>
+                            <p class="bubble-content">
+                                As of June 12, 2025, before Game 4 of the 2025 NBA Finals, Chet Holmgren showed an improving scoring trend with 6, 15, and 20 points in the first three games. His recent 20-point performance on June 11 suggested he could hit over 15.5 points in the next game, though his overall Finals average remained around 11.3 points with some inconsistency. Given his rising role and minutes, betting on Holmgren to score over 15.5 points was a reasonable expectation, while over 20 points was more optimistic but less likely based on prior games.
+                            </p>
+                            <div class="bubble-separator"></div>
+                            
+                            <!-- Recent Performance Table -->
+                            <div class="bubble-content">
+                                <h3 class="bubble-title">Recent Performance | Chet Holmgren</h3>
+                                
+                                <div class="performance-table-container">
+                                    <table class="performance-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Opponent</th>
+                                                <th class="points-category">Points</th>
+                                                <th>Minutes</th>
+                                                <th>FG%</th>
+                                                <th>Rebounds</th>
+                                                <th>Blocks</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>6/11/25</td>
+                                                <td>@IND</td>
+                                                <td class="points-cell">20</td>
+                                                <td>35</td>
+                                                <td>40.0%</td>
+                                                <td>10</td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>6/08/25</td>
+                                                <td>@IND</td>
+                                                <td class="points-cell">15</td>
+                                                <td>28</td>
+                                                <td>54.5%</td>
+                                                <td>6</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>6/05/25</td>
+                                                <td>IND</td>
+                                                <td class="points-cell">6</td>
+                                                <td>24</td>
+                                                <td>11.1%</td>
+                                                <td>6</td>
+                                                <td>0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>5/28/25</td>
+                                                <td>MIN</td>
+                                                <td class="points-cell">22</td>
+                                                <td>31</td>
+                                                <td>57.1%</td>
+                                                <td>9</td>
+                                                <td>2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>5/26/25</td>
+                                                <td>@MIN</td>
+                                                <td class="points-cell">21</td>
+                                                <td>29</td>
+                                                <td>62.5%</td>
+                                                <td>7</td>
+                                                <td>3</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="stats-summary">
+                                    <div class="stats-left">
+                                        <div class="stat-item">
+                                            Scoring Average (L5): <span class="stat-value">16.8 PPG</span>
+                                        </div>
+                                        <!-- <div class="stat-item">
+                                            Net Rating: <span class="stat-value">+12.0</span>
+                                        </div> -->
+                                    </div>
+                                    <a href="#" class="view-odds-link">
+                                        > All Game Logs
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- NEW BETTING SECTION -->
+                            <div class="betting-section-container">
+                                <h3 class="betting-title">Will Chet Holmgren hit over 20 PTS?</h3>
+                                <p class="betting-paragraph">
+                                    <strong>No, it's a reach.</strong> 
+                                    Holmgren scored 20 on June 11, but that’s his 
+                                    high mark and not a trend. He’s averaging under 
+                                    15 PPG in the series, and while his minutes and 
+                                    efficiency have improved, his role in the offense 
+                                    hasn’t expanded enough to consistently push him 
+                                    past 20.0 points.
+                                </p>
+                                <div class="betting-interior-container">
+                                    <div class="betting-option">
+                                        <div class="betting-icon">
+                                            <img src="./img/svg/confidence-ring-red.svg" width="24" height="24" alt="Betting Icon" />
+                                        </div>
+                                        <div class="betting-content">
+                                            <div class="betting-subtitle">Chet Holmgren</div>
+                                            <div class="betting-description">
+                                                <span class="bet-type-over">Over</span>
+                                                <span class="bet-type-points">20 PTS</span>
+                                            </div>
+                                        </div>
+                                        <div class="betting-input-container">
+                                            <label class="betting-input-label">Stake</label>
+                                            <div class="betting-scroll-picker" id="bettingScrollPicker">
+                                                <div class="single-scroll-value">
+                                                    <span class="publica-dollar">$</span>25
+                                                </div>
+                                                <input type="text" class="custom-scroll-input" maxlength="3" inputmode="numeric" pattern="[0-9]*" aria-label="Enter custom bet amount" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="betting-actions-row">
+                                        <button class="betting-dropdown-btn" id="sportsbookDropdownBtn">
+                                            <div style="display: flex; align-items: center;">
+                                                <img src="./img/svg/fanduel.svg" width="22" height="22" alt="Fanduel" class="sportsbook-btn-icon" />
+                                                <span class="dropdown-main-text">FanDuel</span>
+                                                <span class="dropdown-grey-text">+230</span>
+                                            </div>
+                                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </button>
+                                        <div class="sportsbook-dropdown-menu" id="sportsbookDropdownMenu">
+                                            <!-- sportsbook-option blocks -->
+                                            <div class="sportsbook-option selected" data-sportsbook="fanduel">
+                                                <div style="display: flex; align-items: center;">
+                                                    <img src="./img/svg/fanduel.svg" width="22" height="22" alt="Fanduel" class="sportsbook-icon" />
+                                                    <span class="sportsbook-name">FanDuel</span>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                                    <span class="sportsbook-odds">+230</span>
+                                                    <span class="sportsbook-line">o15.5</span>
+                                                </div>
+                                            </div>
+                                            <div class="sportsbook-option" data-sportsbook="draftkings">
+                                                <div style="display: flex; align-items: center;">
+                                                    <img src="./img/svg/crown.svg" width="22" height="22" alt="DraftKings" class="sportsbook-icon" />
+                                                    <span class="sportsbook-name">DraftKings</span>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                                    <span class="sportsbook-odds">+220</span>
+                                                    <span class="sportsbook-line">o15.0</span>
+                                                </div>
+                                            </div>
+                                            <div class="sportsbook-option" data-sportsbook="betmgm">
+                                                <div style="display: flex; align-items: center;">
+                                                    <img src="./img/svg/betmgm.svg" width="22" height="22" alt="BetMGM" class="sportsbook-icon" />
+                                                    <span class="sportsbook-name">BetMGM</span>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                                    <span class="sportsbook-odds">+240</span>
+                                                    <span class="sportsbook-line">o16.0</span>
+                                                </div>
+                                            </div>
+                                            <div class="sportsbook-option" data-sportsbook="caesars">
+                                                <div style="display: flex; align-items: center;">
+                                                    <img src="./img/svg/ceasers.svg" width="22" height="22" alt="Caesars" class="sportsbook-icon" />
+                                                    <span class="sportsbook-name">Caesars</span>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                                    <span class="sportsbook-odds">+235</span>
+                                                    <span class="sportsbook-line">o15.5</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="betting-action-btn" id="addToBetslipBtn">
+                                            <img src="./img/svg/star-icon.svg" width="18" height="18" alt="Add to Betslip" class="betting-action-icon" />
+                                            <span class="betting-action-text">Add Betslip</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ADDITIONAL BETTING SECTION -->
+                            <div class="betting-section-container">
+                                <h3 class="betting-title">Will Chet Holmgren hit under 15.5 PTS?</h3>
+                                <p class="betting-paragraph">
+                                    <strong>Yes, there is a strong case for Holmgren hitting under 15.5 points in the next game.</strong> While Holmgren did score 20 in Game 3, that performance looks more like an outlier than a new baseline. His offensive role remains secondary to SGA and Giddey, and his production has been volatile — with prior games well below this threshold. Despite an increase in minutes, his scoring efficiency is still unreliable: 11.1% in Game 1, only up to 40% in Game 3, which is average at best for a big man.
+                                </p>
+                                <div class="betting-interior-container">
+                                    <div class="betting-option">
+                                        <div class="betting-icon">
+                                            <img src="./img/svg/confidence-ring-green.svg" width="24" height="24" alt="Betting Icon" />
+                                        </div>
+                                        <div class="betting-content">
+                                            <div class="betting-subtitle">Chet Holmgren</div>
+                                            <div class="betting-description">
+                                                <span class="bet-type-over" style="color:#FF5A5A;">Under</span>
+                                                <span class="bet-type-points">15.5 PTS</span>
+                                            </div>
+                                        </div>
+                                        <div class="betting-input-container">
+                                            <label class="betting-input-label">Stake</label>
+                                            <div class="betting-scroll-picker">
+                                                <div class="single-scroll-value">
+                                                    <span class="publica-dollar">$</span>25
+                                                </div>
+                                                <input type="text" class="custom-scroll-input" maxlength="3" inputmode="numeric" pattern="[0-9]*" aria-label="Enter custom bet amount" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="betting-actions-row">
+                                        <button class="betting-dropdown-btn">
+                                            <div style="display: flex; align-items: center;">
+                                                <img src="./img/svg/crown.svg" width="22" height="22" alt="DraftKings" class="sportsbook-btn-icon" />
+                                                <span class="dropdown-main-text">DraftKings</span>
+                                                <span class="dropdown-grey-text">-110</span>
+                                            </div>
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </button>
+                                        <div class="sportsbook-dropdown-menu">
+                                            <div class="sportsbook-option selected" data-sportsbook="draftkings">
+                                                <div style="display: flex; align-items: center;">
+                                                    <img src="./img/svg/crown.svg" width="22" height="22" alt="DraftKings" class="sportsbook-icon" />
+                                                    <span class="sportsbook-name">DraftKings</span>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                                    <span class="sportsbook-odds">-110</span>
+                                                    <span class="sportsbook-line">u15.5</span>
+                                                </div>
+                                            </div>
+                                            <div class="sportsbook-option" data-sportsbook="fanduel">
+                                                <div style="display: flex; align-items: center;">
+                                                    <img src="./img/svg/fanduel.svg" width="22" height="22" alt="Fanduel" class="sportsbook-icon" />
+                                                    <span class="sportsbook-name">FanDuel</span>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                                    <span class="sportsbook-odds">-105</span>
+                                                    <span class="sportsbook-line">u15.5</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="betting-action-btn">
+                                            <img src="./img/svg/star-icon.svg" width="18" height="18" alt="Add to Betslip" class="betting-action-icon" />
+                                            <span class="betting-action-text">Add Betslip</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Second AI Bubble -->
+                        <div class="ai-chat-bubble">
+                            <div class="bubble-main-header">
+                                <img src="./img/svg/mascot-icon-green.svg" alt="Analysis Icon" class="bubble-header-icon" />
+                                <h2 class="bubble-main-title">Want to view alternative bet options?</h2>
+                            </div>
+                            <div class="bubble-separator"></div>
+                            <p class="bubble-content">
+                                Not totally confident in this line? I can show you other high-probability plays across tonight’s slate — or help you compare odds for this exact bet across all major books.
+                            </p>
+                            <div class="bubble-links">
+                                <a href="#" class="bubble-link"> > View Other Alternatives</a>
+                                <a href="#" class="bubble-link"> > View All Odds</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 6. FAQ Section -->
+                    <section class="faq-section">
+                        <div class="faq-header">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                <path d="M8 9h8"></path>
+                                <path d="M8 13h6"></path>
+                            </svg>
+                            <span class="faq-title">Related Storylines</span>
+                        </div>
+                        <div class="faq-separator"></div>
+                        
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <span class="faq-text">What point range do experts and consensus expect for Holmgren?</span>
+                                <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                            <div class="faq-separator"></div>
+                            
+                            <div class="faq-item">
+                                <span class="faq-text">How many rebounds will Holmgren get in his upcoming match?</span>
+                                <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                            <div class="faq-separator"></div>
+                            
+                            <div class="faq-item">
+                                <span class="faq-text">Is Holmgren likely to hit over or under 15 rebounds this season?</span>
+                                <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                            <div class="faq-separator"></div>
+                            
+                            <div class="faq-item">
+                                <span class="faq-text">What are the chances Holmgren will reach 15 rebounds in a game?</span>
+                                <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                            </div>
+                            <div class="faq-separator"></div>
+                        </div>
+                    </section>
+                        </div>
+                        
+                        <!-- Sources Tab -->
+                        <div class="tab-pane" data-tab="sources">
+                            <div class="empty-tab-content">
+                                <div class="empty-tab-icon">
+                                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                        <polyline points="14,2 14,8 20,8"></polyline>
+                                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                                        <polyline points="10,9 9,9 8,9"></polyline>
+                                    </svg>
+                                </div>
+                                <h3 class="empty-tab-title">Sources</h3>
+                                <p class="empty-tab-text">Sources and references will appear here</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Images Tab -->
+                        <div class="tab-pane" data-tab="images">
+                            <div class="empty-tab-content">
+                                <div class="empty-tab-icon">
+                                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                        <polyline points="21,15 16,10 5,21"></polyline>
+                                    </svg>
+                                </div>
+                                <h3 class="empty-tab-title">Images</h3>
+                                <p class="empty-tab-text">Images and visual content will appear here</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Explore Tab -->
+                        <div class="tab-pane" data-tab="explore">
+                            <div class="empty-tab-content">
+                                <div class="empty-tab-icon">
+                                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polygon points="16.24,7.76 14.12,14.12 7.76,16.24 9.88,9.88 16.24,7.76"></polygon>
+                                    </svg>
+                                </div>
+                                <h3 class="empty-tab-title">All Odds</h3>
+                                <p class="empty-tab-text">Odds and betting information will appear here</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chat Input and Bet Slip Container -->
+                    <div class="dashboard-chat-input-wrapper">
+                      <div class="chat-betslip-container">
+                                              <!-- Bet Slip Minimized Component -->
+                      <div class="betslip-minimized" id="betslipMinimized">
+                        <div class="betslip-icon">
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="8" cy="21" r="1"></circle>
+                            <circle cx="19" cy="21" r="1"></circle>
+                            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                          </svg>
+                          <div class="betslip-badge">0</div>
+                        </div>
+                      </div>
+                        <section class="chat-input-section">
+                        <div class="chat-input-container">
+                          <div class="tags-group">
+                            <div class="tags-scroll-container" id="tagsScrollContainer">
+                              <div class="tags-list" id="tagsList">
+                                <div class="tag active-tag" data-tag="Player Stats"><span>Player Stats</span></div>
+                                <div class="tag active-tag" data-tag="Videos"><span>Videos</span></div>
+                                <div class="tag active-tag" data-tag="News"><span>News</span></div>
+                              </div>
+                            </div>
+                            <div class="more-tag" id="moreTag">
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="1"></circle>
+                                <circle cx="19" cy="12" r="1"></circle>
+                                <circle cx="5" cy="12" r="1"></circle>
+                              </svg>
+                            </div>
+                          </div>
+                          <div class="chat-input-row">
+                            <div class="input-group">
+                              <input type="text" id="chatInput" placeholder="Type a hunch.. e.g., Will Scheffler Beat Rory?" class="chat-input" autocomplete="off" />
+                            </div>
+                            <div class="icons-group">
+                              <div class="left-icons">
+                                <button class="icon-btn" id="attachBtn" aria-label="Attach file">
+                                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66L9.64 16.2a2 2 0 0 1-2.83-2.83l8.49-8.49"></path>
+                                  </svg>
+                                </button>
+                                <button class="icon-btn" id="micBtn" aria-label="Voice input">
+                                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                                    <line x1="12" y1="19" x2="12" y2="23"></line>
+                                    <line x1="8" y1="23" x2="16" y2="23"></line>
+                                  </svg>
+                                </button>
+                              </div>
+                              <div class="right-icons">
+                                <button class="icon-btn send-btn" id="sendBtn" aria-label="Send message">
+                                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22,2 15,22 11,13 2,9 22,2"></polygon>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+    
+    <!-- Mobile Background Overlay -->
+    <div class="betslip-overlay" id="betslipOverlay"></div>
+    
+    <!-- Bet Slip Popup -->
+    <div class="betslip-popup" id="betslipPopup">
+      <div class="betslip-popup-header">
+        <h3>Betslip <span class="betslip-header-badge" id="betslipHeaderBadge">0</span></h3>
+        <button class="betslip-close-btn" id="betslipCloseBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="betslip-popup-content">
+        <!-- Bet slip content will go here -->
+      </div>
+      <div class="betslip-overlay-section">
+        <!-- Left Group: Total Stake and Payout -->
+        <div class="betslip-overlay-left">
+          <div class="betslip-total-group">
+            <div class="betslip-total-item">
+              <label class="betslip-total-label">Total Stake</label>
+              <div class="betslip-total-value" data-decimal=".00">$0</div>
+            </div>
+            <div class="betslip-total-item">
+              <label class="betslip-total-label">Total Potential Payout</label>
+              <div class="betslip-total-value" data-decimal=".00">$0</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right Group: Action Buttons -->
+        <div class="betslip-overlay-right">
+          <button class="betslip-action-btn betslip-save-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path>
+            </svg>
+            <span>Save Betslip</span>
+          </button>
+          <button class="betslip-action-btn betslip-place-btn">
+            <img src="./img/svg/coin.svg" width="20" height="20" alt="Place Bets" />
+            <span>Place Bets</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/quick-actions.js"></script>
+    <script src="scripts/dashboard.js"></script>
+</body>
+</html>

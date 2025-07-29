@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BetBot.ai - Bet Your Storyline</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Side Menu (Left Sidebar) - Desktop Only -->
+        <div class="side-menu" id="sideMenu">
+            <!-- Collapsed State -->
+            <div class="menu-collapsed" id="menuCollapsed">
+                <!-- Expand Button -->
+                <button class="menu-expand-btn" id="menuExpandBtn" aria-label="Expand menu">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="2" y1="6" x2="22" y2="6"></line>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <line x1="2" y1="18" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+
+                <!-- Add Chat Button -->
+                <button class="menu-add-chat-btn" id="addChatBtn" aria-label="Add new chat">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                </button>
+
+                <!-- Navigation Icons -->
+                <div class="menu-nav-icons">
+                    <button class="nav-icon-btn active" id="chatBtn" aria-label="Chat" data-nav="chat">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path>
+                        </svg>
+                    </button>
+                    
+                    <button class="nav-icon-btn" id="cartBtn" aria-label="Cart" data-nav="cart">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="8" cy="21" r="1"></circle>
+                            <circle cx="19" cy="21" r="1"></circle>
+                            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+                        </svg>
+                    </button>
+                    
+                    <button class="nav-icon-btn" id="exploreBtn" aria-label="Explore" data-nav="explore">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polygon points="16.24,7.76 14.12,14.12 7.76,16.24 9.88,9.88 16.24,7.76"></polygon>
+                        </svg>
+                    </button>
+                    
+                    <button class="nav-icon-btn" id="savedBtn" aria-label="Saved" data-nav="saved">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path>
+                        </svg>
+                    </button>
+                    
+                    <button class="nav-icon-btn" id="settingsBtn" aria-label="Settings" data-nav="settings">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                    </button>
+                    
+                    <button class="nav-icon-btn" id="helpBtn" aria-label="Help & Support" data-nav="help">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Expanded State -->
+            <div class="menu-expanded" id="menuExpanded">
+                <!-- Menu Header - Fixed -->
+                <div class="menu-header">
+                    <div class="menu-brand">
+                        <div class="brand-main">
+                            <div class="brand-logo">
+                                <img src="./img/svg/mascot-white.svg" alt="Brand Logo" width="22" height="22" style="display: block;" />
+                            </div>
+                            <div class="brand-name">BetBot.ai</div>
+                        </div>
+                        <span class="brand-chevron" id="closeMenuChevron">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                    <button class="new-chat-btn" id="newChatBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        New Chat
+                    </button>
+                </div>
+
+                <!-- Menu Body - Scrollable Chat History with Fade Overlays -->
+                <div class="menu-body" id="menuBody">
+                    <div class="chat-history-section" id="menuSectionContent">
+                        <!-- Today -->
+                        <div class="history-group">
+                            <div class="history-group-title">Today</div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Will Chet Holmgren go over 20 PTS next game?</div>
+                                <div class="chat-item-preview">Chet is UNLIKELY to go over 20+ PTS, but LIKELY to hit over 15.5 PTS based on recent performance...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">2 hours ago</span>
+                                    <span class="chat-item-type">NBA</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Lakers vs Warriors betting analysis</div>
+                                <div class="chat-item-preview">Strong value on the over with both teams averaging 118+ points in their last 5 games...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">4 hours ago</span>
+                                    <span class="chat-item-type">NBA</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Djokovic vs Nadal clay court prediction</div>
+                                <div class="chat-item-preview">Match duration bet could be profitable based on their recent clay court performances...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">6 hours ago</span>
+                                    <span class="chat-item-type">Tennis</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Yesterday -->
+                        <div class="history-group">
+                            <div class="history-group-title">Yesterday</div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Manchester United vs City odds analysis</div>
+                                <div class="chat-item-preview">Excellent value on the draw at +240 considering United's defensive improvements...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">1 day ago</span>
+                                    <span class="chat-item-type">Soccer</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">NFL Week 12 betting picks</div>
+                                <div class="chat-item-preview">Weather conditions favor the under in the Denver game, strong defensive matchup...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">1 day ago</span>
+                                    <span class="chat-item-type">NFL</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- This Week -->
+                        <div class="history-group">
+                            <div class="history-group-title">This Week</div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">NBA Finals Game 3 predictions</div>
+                                <div class="chat-item-preview">Analyzing key player matchups and historical performance data for optimal betting strategy...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">3 days ago</span>
+                                    <span class="chat-item-type">NBA</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Premier League title race analysis</div>
+                                <div class="chat-item-preview">Current odds and value bets for the remaining fixtures in the championship race...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">4 days ago</span>
+                                    <span class="chat-item-type">Soccer</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">March Madness bracket optimization</div>
+                                <div class="chat-item-preview">Statistical analysis of upset probabilities and optimal bracket construction strategies...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">5 days ago</span>
+                                    <span class="chat-item-type">NCAA</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Footer - Fixed -->
+                <div class="menu-footer">
+                    <div class="menu-quick-actions">
+                        <!-- Chat Icon (active: green) -->
+                        <img src="./img/svg/chat-icon.svg" width="24" height="24" alt="Chat" class="quick-action-icon quick-action-chat active" />
+                        <!-- Explore Icon (white) -->
+                        <img src="./img/svg/explore-icon.svg" width="24" height="24" alt="Explore" class="quick-action-icon quick-action-explore" />
+                        <!-- Favorites Icon (white) -->
+                        <img src="./img/svg/save-icon.svg" width="24" height="24" alt="Favorites" class="quick-action-icon quick-action-favs" />
+                        <!-- Cart Icon (white, for saved betslips) -->
+                        <img src="./img/svg/cart-icon.svg" width="24" height="24" alt="Cart" class="quick-action-icon quick-action-cart" />
+                    </div>
+                    <div class="menu-actions">
+                        <div class="menu-action-item" id="settingsBtn">
+                            <svg class="menu-action-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"></path>
+                            </svg>
+                            <span class="menu-action-text">Settings</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+            <div class="mobile-menu" id="mobileMenu">
+                <!-- Menu Header - Fixed -->
+                <div class="menu-header">
+                    <div class="menu-brand">
+                        <div class="brand-main">
+                            <div class="brand-logo">
+                                <img src="./img/svg/mascot-white.svg" alt="Brand Logo" width="20" height="20" style="display: block;" />
+                            </div>
+                            <div class="brand-name">BetBot.ai</div>
+                        </div>
+                        <span class="brand-chevron" id="closeMobileMenuChevron">
+                            <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </span>
+                    </div>
+                    <button class="new-chat-btn" id="mobileNewChatBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        New Chat
+                    </button>
+                </div>
+
+                <!-- Menu Body - Scrollable Chat History with Fade Overlays -->
+                <div class="menu-body">
+                    <div class="chat-history-section" id="mobileMenuSectionContent">
+                        <!-- Today -->
+                        <div class="history-group">
+                            <div class="history-group-title">Today</div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Will Chet Holmgren go over 20 PTS next game?</div>
+                                <div class="chat-item-preview">Chet is UNLIKELY to go over 20+ PTS, but LIKELY to hit over 15.5 PTS based on recent performance...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">2 hours ago</span>
+                                    <span class="chat-item-type">NBA</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Lakers vs Warriors betting analysis</div>
+                                <div class="chat-item-preview">Strong value on the over with both teams averaging 118+ points in their last 5 games...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">4 hours ago</span>
+                                    <span class="chat-item-type">NBA</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Djokovic vs Nadal clay court prediction</div>
+                                <div class="chat-item-preview">Match duration bet could be profitable based on their recent clay court performances...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">6 hours ago</span>
+                                    <span class="chat-item-type">Tennis</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Yesterday -->
+                        <div class="history-group">
+                            <div class="history-group-title">Yesterday</div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Manchester United vs City odds analysis</div>
+                                <div class="chat-item-preview">Excellent value on the draw at +240 considering United's defensive improvements...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">1 day ago</span>
+                                    <span class="chat-item-type">Soccer</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">NFL Week 12 betting picks</div>
+                                <div class="chat-item-preview">Weather conditions favor the under in the Denver game, strong defensive matchup...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">1 day ago</span>
+                                    <span class="chat-item-type">NFL</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- This Week -->
+                        <div class="history-group">
+                            <div class="history-group-title">This Week</div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">NBA Finals Game 3 predictions</div>
+                                <div class="chat-item-preview">Analyzing key player matchups and historical performance data for optimal betting strategy...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">3 days ago</span>
+                                    <span class="chat-item-type">NBA</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">Premier League title race analysis</div>
+                                <div class="chat-item-preview">Current odds and value bets for the remaining fixtures in the championship race...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">4 days ago</span>
+                                    <span class="chat-item-type">Soccer</span>
+                                </div>
+                            </div>
+                            <div class="chat-item">
+                                <div class="chat-item-title">March Madness bracket optimization</div>
+                                <div class="chat-item-preview">Statistical analysis of upset probabilities and optimal bracket construction strategies...</div>
+                                <div class="chat-item-meta">
+                                    <span class="chat-item-time">5 days ago</span>
+                                    <span class="chat-item-type">NCAA</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Footer - Fixed -->
+                <div class="menu-footer">
+                    <div class="menu-quick-actions">
+                        <!-- Chat Icon (active: green) -->
+                        <img src="./img/svg/chat-icon.svg" width="24" height="24" alt="Chat" class="quick-action-icon quick-action-chat active" />
+                        <!-- Explore Icon (white) -->
+                        <img src="./img/svg/explore-icon.svg" width="24" height="24" alt="Explore" class="quick-action-icon quick-action-explore" />
+                        <!-- Favorites Icon (white) -->
+                        <img src="./img/svg/save-icon.svg" width="24" height="24" alt="Favorites" class="quick-action-icon quick-action-favs" />
+                        <!-- Cart Icon (white, for saved betslips) -->
+                        <img src="./img/svg/cart-icon.svg" width="24" height="24" alt="Cart" class="quick-action-icon quick-action-cart" />
+                    </div>
+                    <div class="menu-actions">
+                        <div class="menu-action-item" id="mobileSettingsBtn">
+                            <svg class="menu-action-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"></path>
+                            </svg>
+                            <span class="menu-action-text">Settings</span>
+                        </div>
+                        <div class="menu-action-item" id="mobileHelpBtn">
+                            <svg class="menu-action-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                            <span class="menu-action-text">Help & Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Section (Right) -->
+        <div class="dashboard" id="dashboard">
+            <div class="dashboard-inner">
+                <!-- Navbar -->
+                <nav class="navbar">
+                    <div class="navbar-left">
+                        <!-- Mobile Menu Button -->
+                        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 6 15 12 9 18"></polyline>
+                            </svg>
+                        </button>
+                        <div class="brand-logo">
+                            Betbot<span class="brand-ai">.ai</span>
+                        </div>
+                    </div>
+                    <div class="navbar-right">
+                        <button class="auth-button sign-in-btn">Login</button>
+                        <button class="auth-button sign-up-btn">Sign Up</button>
+                    </div>
+                </nav>
+                <div class="glow-effect"></div>
+                
+                <!-- Dashboard Content -->
+                <div class="dashboard-content">
+                    
+                    <!-- Hero Section -->
+                    <section class="hero-section">
+                        <h1 class="hero-title">Your <span class="storyline-green">Betting</span> Workspace.</h1>
+                        <div class="hero-subtitle">
+                            <span id="typing-text"></span><span class="typing-cursor">|</span>
+                        </div>
+                    </section>
+
+                    <!-- Chat Input Section -->
+                    <section class="chat-input-section">
+                        <div class="chat-input-container">
+                            <div class="tags-group">
+                                <div class="tags-scroll-container" id="tagsScrollContainer">
+                                    <div class="tags-list" id="tagsList">
+                                        <div class="tag active-tag" data-tag="Player Stats">
+                                            <span>Player Stats</span>
+                                        </div>
+                                        <div class="tag active-tag" data-tag="Videos">
+                                            <span>Videos</span>
+                                        </div>
+                                        <div class="tag active-tag" data-tag="News">
+                                            <span>News</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="more-tag" id="moreTag">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="1"></circle>
+                                        <circle cx="19" cy="12" r="1"></circle>
+                                        <circle cx="5" cy="12" r="1"></circle>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <input
+                                    type="text"
+                                    id="chatInput"
+                                    placeholder="Type a hunch.. e.g., Will Scheffler Beat Rory?"
+                                    class="chat-input"
+                                    autocomplete="off"
+                                />
+                            </div>
+
+                            <div class="icons-group">
+                                <div class="left-icons">
+                                    <button class="icon-btn" id="attachBtn" aria-label="Attach file">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66L9.64 16.2a2 2 0 0 1-2.83-2.83l8.49-8.49"></path>
+                                        </svg>
+                                    </button>
+                                    <button class="icon-btn" id="micBtn" aria-label="Voice input">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                                            <line x1="12" y1="19" x2="12" y2="23"></line>
+                                            <line x1="8" y1="23" x2="16" y2="23"></line>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="right-icons">
+                                    <button class="icon-btn send-btn" id="sendBtn" aria-label="Send message">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                                            <polygon points="22,2 15,22 11,13 2,9 22,2"></polygon>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Cards Section -->
+                    <section class="cards-section">
+                        <h2 class="cards-title">Trending This Week</h2>
+                        <div class="fade-out-overlay">
+                            <div class="fade-left"></div>
+                            <div class="fade-right"></div>
+                        </div>
+                        <div class="cards-container" id="cardsContainer">
+                            <div class="card">
+                                <svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M8 12l2 2 4-4"></path>
+                                </svg>
+                                <span class="card-text">Will Chet Holmgren go over 20 PTS next game?</span>
+                            </div>
+                            <div class="card">
+                                <svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M8 12l2 2 4-4"></path>
+                                </svg>
+                                <span class="card-text">Will Tkatchuk Record an Assist against the Oilers?</span>
+                            </div>
+                            <div class="card">
+                                <svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M8 12l2 2 4-4"></path>
+                                </svg>
+                                <span class="card-text">Can City cover -1.5?</span>
+                            </div>
+                            <div class="card">
+                                <svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M8 12l2 2 4-4"></path>
+                                </svg>
+                                <span class="card-text">Is Djokovic a lock for 2-0?</span>
+                            </div>
+                            <div class="card">
+                                <svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M8 12l2 2 4-4"></path>
+                                </svg>
+                                <span class="card-text">Is SGA a lock for 20+ Points for Tonight?</span>
+                            </div>
+                            <div class="card">
+                                <svg class="card-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M8 12l2 2 4-4"></path>
+                                </svg>
+                                <span class="card-text">Can McDavid hit 2+ points?</span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tags Popup -->
+    <div class="tags-popup-overlay" id="tagsPopupOverlay">
+        <div class="tags-popup" id="tagsPopup">
+            <div class="tags-popup-header">
+                <h3>Select Tags</h3>
+                <button class="tags-popup-close" id="tagsPopupClose" aria-label="Close tags popup">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="tags-popup-content">
+                <div class="tags-grid" id="tagsGrid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/quick-actions.js"></script>
+</body>
+</html>
