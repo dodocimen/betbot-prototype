@@ -398,6 +398,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(startAutoScroll, 2000)
 
     hideCardsOnInputFocusMobile()
+    handleMobileKeyboardDismissal()
   }
 
   function hideCardsOnInputFocusMobile() {
@@ -413,6 +414,27 @@ document.addEventListener("DOMContentLoaded", () => {
       if (window.innerWidth <= 768) {
         setTimeout(() => cardsSection.classList.remove("hide-on-input"), 200)
       }
+    })
+  }
+
+  // Fix for mobile keyboard dismissal issue
+  function handleMobileKeyboardDismissal() {
+    let initialViewportHeight = window.innerHeight
+    
+    // Listen for viewport changes (keyboard open/close)
+    window.addEventListener('resize', () => {
+      const currentViewportHeight = window.innerHeight
+      
+      // If viewport height increased (keyboard closed) and body is locked
+      if (currentViewportHeight > initialViewportHeight && document.body.style.overflow === 'hidden') {
+        // Only restore overflow if mobile menu is not open
+        if (!state.mobileMenuOpen) {
+          document.body.style.overflow = ''
+        }
+      }
+      
+      // Update initial height for next comparison
+      initialViewportHeight = currentViewportHeight
     })
   }
 
