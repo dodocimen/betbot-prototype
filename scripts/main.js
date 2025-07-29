@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     mobileMenuOpen: false,
     activeNav: "chat",
     autoScrollInterval: null,
+    viewportHeight: window.innerHeight,
   }
 
   // ===== TYPING ANIMATION =====
@@ -394,11 +395,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Setup event listeners
     setupEventListeners()
 
+    // Setup viewport handling for Safari mobile
+    setupViewportHandling()
+
     // Start auto-scroll for cards
     setTimeout(startAutoScroll, 2000)
 
     hideCardsOnInputFocusMobile()
-    handleMobileKeyboardDismissal()
   }
 
   function hideCardsOnInputFocusMobile() {
@@ -417,25 +420,42 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
-  // Fix for mobile keyboard dismissal issue
-  function handleMobileKeyboardDismissal() {
-    let initialViewportHeight = window.innerHeight
+  // ===== SAFARI MOBILE VIEWPORT HANDLING =====
+  function handleViewportChange() {
+    const currentHeight = window.innerHeight;
+    const heightDiff = currentHeight - state.viewportHeight;
     
-    // Listen for viewport changes (keyboard open/close)
+    // Update stored height
+    state.viewportHeight = currentHeight;
+    
+    // Force reflow to ensure proper positioning
+    document.body.style.height = `${currentHeight}px`;
+    document.documentElement.style.height = `${currentHeight}px`;
+    
+    // Trigger resize event to update any dependent layouts
+    window.dispatchEvent(new Event('resize'));
+  }
+
+  function setupViewportHandling() {
+    // Handle viewport changes (keyboard show/hide, orientation change)
+    let resizeTimeout;
     window.addEventListener('resize', () => {
-      const currentViewportHeight = window.innerHeight
-      
-      // If viewport height increased (keyboard closed) and body is locked
-      if (currentViewportHeight > initialViewportHeight && document.body.style.overflow === 'hidden') {
-        // Only restore overflow if mobile menu is not open
-        if (!state.mobileMenuOpen) {
-          document.body.style.overflow = ''
-        }
-      }
-      
-      // Update initial height for next comparison
-      initialViewportHeight = currentViewportHeight
-    })
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(handleViewportChange, 100);
+    });
+
+    // Handle visual viewport changes (Safari specific)
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(handleViewportChange, 100);
+      });
+    }
+
+    // Handle orientation changes
+    window.addEventListener('orientationchange', () => {
+      setTimeout(handleViewportChange, 500);
+    });
   }
 
   // Start the application

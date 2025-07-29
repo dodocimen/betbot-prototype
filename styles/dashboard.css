@@ -1983,7 +1983,8 @@ th.points-category {
     right: 0;
     padding: 0.6rem;
     border-radius: 10px;
-    top: -50px;
+    bottom: 100%;
+    margin-bottom: 6px;
   }
 
   .betslip-minimized .betslip-icon svg {
@@ -2001,7 +2002,8 @@ th.points-category {
 
   /* Adjust bet slip position when chat input is active */
   .dashboard-chat-input-wrapper.input-active .betslip-minimized {
-    top: -120px;
+    bottom: 100%;
+    margin-bottom: 6px;
   }
 }
 
@@ -2113,8 +2115,9 @@ th.points-category {
 /* ===== BET SLIP MINIMIZED COMPONENT ===== */
 .betslip-minimized {
   position: absolute;
-  top: -60px;
+  bottom: 100%;
   right: 0;
+  margin-bottom: 8px;
   z-index: 1001;
   background: rgba(255, 255, 255, 0.022);
   backdrop-filter: blur(50px);
@@ -2140,7 +2143,8 @@ th.points-category {
     right: 0;
     padding: .8rem;
     position: absolute;
-    top: -60px;
+    bottom: 100%;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -84,6 +84,9 @@
 
 html {
   font-size: 16px;
+  height: 100%;
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for mobile */
 }
 
 body {
@@ -93,6 +96,7 @@ body {
   overflow-x: hidden;
   letter-spacing: 0.01em;
   height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for mobile */
   overflow: hidden;
 }
 
@@ -100,6 +104,7 @@ body {
 .main-container {
   display: flex;
   height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for mobile */
   width: 100vw;
 }
 
@@ -636,7 +641,13 @@ body {
   left: 0;
   bottom: 0;
   width: 80%;
-  background: var(--color-side-menu-bg);
+  background: linear-gradient(135deg, 
+    rgba(25, 35, 45, 0.95) 0%, 
+    rgba(30, 42, 55, 0.92) 25%, 
+    rgba(35, 48, 62, 0.89) 50%, 
+    rgba(37, 74, 85, 0.86) 75%, 
+    rgba(30, 99, 81, 0.83) 100%
+  );
   backdrop-filter: blur(100px);
   border-right: 1px rgba(171, 213, 255, 0.124) solid;
   transform: translateX(-100%);
@@ -644,6 +655,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  box-shadow: 2px 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .mobile-menu-overlay.show .mobile-menu {
@@ -948,6 +960,7 @@ body {
 .input-group {
   width: 100%;
   margin-bottom: 1rem;
+
 }
 
 .chat-input {
@@ -982,15 +995,18 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 
 .left-icons {
   display: flex;
   gap: 12px;
+
 }
 
 .right-icons {
   display: flex;
+
 }
 
 .icon-btn {
@@ -1281,17 +1297,20 @@ body {
 
   .navbar {
     position: fixed;
-    top: 0;
+    top: env(safe-area-inset-top, 0);
     left: 0;
     right: 0;
     z-index: 1002;
+    background-color: var(--color-dashboard-bg);
+    padding-top: max(env(safe-area-inset-top, 0), 0.8rem);
+    padding-bottom: 0.8rem;
   }
 
   .dashboard-content {
     display: flex;
     flex-direction: column;
     flex-direction: column-reverse;
-    padding-top: 4.5rem;
+    padding-top: calc(4.5rem + env(safe-area-inset-top, 0));
     padding-bottom: 0;
   }
 
@@ -1349,7 +1368,7 @@ body {
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 30vh;
+    bottom: 26.5vh;
     width: 100vw;
     max-width: 100vw;
     background: transparent;
@@ -1405,21 +1424,24 @@ body {
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: env(safe-area-inset-bottom, 0);
     width: 100vw;
     max-width: 100vw;
     border-radius: 20px 20px 0 0;
-    background: rgba(255, 255, 255, 0.076);
+    background: rgba(255, 255, 255, 0.028);
     z-index: 1002;
     box-shadow: 0 -2px 24px rgba(0, 0, 0, 0.08);
     margin: 0;
-    padding-bottom: env(safe-area-inset-bottom, 0);
+    padding-bottom:0;
+
   }
   .chat-input-container {
     background: none;
     border: none;
     box-shadow: none;
-    padding: 1rem 1.2rem 1.2rem 1.2rem;
+    padding: 1rem 1.2rem 1.2rem 0rem;
+    margin:0;
+
   }
 
   .send-btn {
@@ -1430,6 +1452,7 @@ body {
   }
   .tags-group {
     margin-bottom: .5rem;
+
   }
   .tag,
   .more-tag {
@@ -1490,6 +1513,7 @@ body {
     padding: 7px 16px;
   }
   .chat-input {
+    border-radius: 0;
     font-size: 1.2rem;
   }
 
